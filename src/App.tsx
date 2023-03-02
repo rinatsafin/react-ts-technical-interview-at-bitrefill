@@ -1,6 +1,6 @@
+import './App.css';
 import { useState } from 'react';
 import reactLogo from './assets/react.svg';
-import './App.css';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -23,15 +23,6 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
-      </div>
-      <div className="container d-none">
-        <div className="item">Item 1</div>
-        <div className="item">Item 2</div>
-        <div className="item">Item 3</div>
-        <div className="item">Item 4</div>
-        <div className="item">Item 5</div>
-        <div className="item">Item 6</div>
-        <div className="item">Item 7</div>
       </div>
     </div>
   );
