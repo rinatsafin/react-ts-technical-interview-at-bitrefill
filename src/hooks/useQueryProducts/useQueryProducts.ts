@@ -15,8 +15,9 @@ type Product = {
       amount: number;
     }
   ];
-  maxAmount: number;
 };
+
+type ProductResult = Omit<Product, 'packages'> & { maxAmount: number };
 
 const getMaxAmountValue = (packages: Product['packages']): number => {
   return packages.reduce((acc, p) => {
@@ -25,14 +26,14 @@ const getMaxAmountValue = (packages: Product['packages']): number => {
   }, 0);
 };
 
-const useQueryProducts = (url: string): Omit<Product, 'packages'>[] => {
-  const [data, setData] = useState<Omit<Product, 'packages'>[]>([]);
+const useQueryProducts = (url: string): ProductResult[] => {
+  const [data, setData] = useState<ProductResult[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const fetchResult = await fetch(url);
-        const result: { data: Product[] } = await fetchResult.json();
+        const fetchPromise = await fetch(url);
+        const result: { data: Product[] } = await fetchPromise.json();
 
         const resultMappedByAmound = result.data.map((d: Product) => {
           const {

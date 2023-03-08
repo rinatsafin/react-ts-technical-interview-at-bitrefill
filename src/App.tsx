@@ -14,12 +14,12 @@ const LIMIT = 10;
 
 function App() {
   const data = useQueryProducts(URL);
-  const dd = data.slice(0, LIMIT);
+  const slicedData = data.slice(0, LIMIT);
 
   return (
     <div className="App">
       <div className="Product">
-        {dd.map((p) => {
+        {slicedData.map((p) => {
           return (
             <Fragment key={p.id}>
               <ul className="product-list">
